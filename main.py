@@ -22,6 +22,8 @@ def search(type: str, directories: str, term: str) -> None:
         print("Please, provide search term.")
         return
 
+    result_file = open("./result.txt", "w")
+
     for path in directories.split(":"):
         files = Path(path).glob(f"*.{type}")
 
@@ -32,7 +34,9 @@ def search(type: str, directories: str, term: str) -> None:
                     result = re.findall(term, line)
 
                     if result:
-                        print(file, line)
+                        result_file.write(line)
+
+    result_file.close()
 
 
 if __name__ == "__main__":
