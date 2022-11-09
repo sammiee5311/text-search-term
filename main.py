@@ -1,3 +1,7 @@
+""" search term in files """
+
+__version__ = "0.1.0"
+
 import re
 from pathlib import Path
 

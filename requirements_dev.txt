@@ -3,3 +3,4 @@ pytest
 isort
 black
 mypy
+tox
