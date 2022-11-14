@@ -15,11 +15,20 @@ classifiers = [
 
 dynamic = ["version", "description"]
 dependencies = [
-  "click"
+  "click",
+  "python-dotenv"
 ]
 
 [tool.black]
 line-length = 120
+
+[tool.pytest.ini_options]
+env = [
+  "RESULT_FILE=./tests/result.txt",
+]
+testpaths = [
+  "tests",
+]
 
 [tool.mypy]
 ignore_missing_imports = true

@@ -2,10 +2,17 @@
 
 __version__ = "0.1.0"
 
+import os
 import re
 from pathlib import Path
 
 import click
+
+from config import load_env
+
+load_env()
+
+RESULT_FILE = os.environ.get("RESULT_FILE", "./result.txt")
 
 
 @click.group()
@@ -26,7 +33,7 @@ def search(type: str, directories: str, term: str) -> None:
         print("Please, provide search term.")
         return
 
-    result_file = open("./result.txt", "w")
+    result_file = open(RESULT_FILE, "w")
 
     for path in directories.split(":"):
         files = Path(path).glob(f"*.{type}")
