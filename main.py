@@ -30,22 +30,25 @@ def cli() -> None:
 @click.option("--term", help="Search term")
 def search(type: str, directories: str, term: str) -> None:
     if not term:
-        print("Please, provide search term.")
+        print("Please, provide a search term.")
         return
 
     result_file = open(RESULT_FILE, "w")
 
     for path in directories.split(":"):
         files = Path(path).glob(f"*.{type}")
+        try:
+            for file in files:
+                if file.is_file():
+                    print(f"Processing {file}...")
+                    with open(file) as f:
+                        for line in f:
+                            result = re.findall(term, line)
 
-        for file in files:
-            print(f"Processing {file}...")
-            with open(file) as f:
-                for line in f:
-                    result = re.findall(term, line)
-
-                    if result:
-                        result_file.write(line)
+                            if result:
+                                result_file.write(line)
+        except Exception as e:
+            print(f"An error is occured. error: {e}")
 
     result_file.close()
 
