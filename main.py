@@ -9,6 +9,7 @@ from pathlib import Path
 import click
 
 from config import load_env
+from logs.logging import logger
 
 load_env()
 
@@ -40,7 +41,7 @@ def search(type: str, directories: str, term: str) -> None:
         try:
             for file in files:
                 if file.is_file():
-                    print(f"Processing {file}...")
+                    logger.info(f"Processing {file}...")
                     with open(file) as f:
                         for line in f:
                             result = re.findall(term, line)
@@ -48,7 +49,7 @@ def search(type: str, directories: str, term: str) -> None:
                             if result:
                                 result_file.write(line)
         except Exception as e:
-            print(f"An error is occured. error: {e}")
+            logger.error(f"An error is occured. error: {e}")
 
     result_file.close()
 
