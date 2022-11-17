@@ -20,8 +20,7 @@ def test_data() -> list[str]:
     return result
 
 
-@pytest.fixture()
-def test_result_data() -> list[str]:
+def get_test_result_data() -> list[str]:
     result = []
 
     if Path(RESULT_FILE).is_file():
