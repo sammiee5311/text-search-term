@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Generator
 
 import pytest
 
@@ -18,6 +19,14 @@ def test_data() -> list[str]:
                 result.append(line.strip())
 
     return result
+
+
+@pytest.fixture(scope="session", autouse=True)
+def clean_up() -> Generator[None, None, None]:
+    yield
+    result_file = Path(RESULT_FILE)
+    if result_file.exists():
+        result_file.unlink()
 
 
 def get_test_result_data() -> list[str]:
