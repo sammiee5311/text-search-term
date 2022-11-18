@@ -1,5 +1,5 @@
 # text search term
-[![CI](https://github.com/sammiee5311/text-search-term/actions/workflows/CI.yaml/badge.svg)](https://github.com/sammiee5311/text-search-term/actions/workflows/CI.yaml) [![python](./imgs/python-version.svg)]()
+[![CI](https://github.com/sammiee5311/text-search-term/actions/workflows/CI.yaml/badge.svg)](https://github.com/sammiee5311/text-search-term/actions/workflows/CI.yaml) [![python](./imgs/python-version.svg)]() [![](./imgs/coverage.svg?dummy=8484744)]()
 
 search term in text or log files and save the result.
 

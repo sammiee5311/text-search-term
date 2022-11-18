@@ -54,6 +54,6 @@ def search(type: str, directories: str, term: str) -> None:
     result_file.close()
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     cli.add_command(search)
     cli()
